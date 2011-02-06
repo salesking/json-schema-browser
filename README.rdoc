@@ -1,12 +1,13 @@
 = JSON Schema Browser
 
-Show JSON Schema's as formatted html, for easy browing.
+Show JSON Schema's as formatted html, for easy browing. See screenshot.png
 
-The most interesting part is a javascript class rendering a json schema 
-to html, with css styles are inspired by visualjquery.com .
+The most interesting part is a quickly hacked javascript class(s2html.js) 
+rendering a an array of schemas to html, with css styles inspired by 
+visualjquery.com
 
-The ruby part(sinatra webserver) is solely needed to grab SalesKing API 
-Schema
+For now the browser shows SalesKing's API schema's (https://github.com/salesking/sk_api_schema/tree/master/json/v1.0) 
+for which the ruby part(sinatra webserver) is solely needed.
 
 == Install
 

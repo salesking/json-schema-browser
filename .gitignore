@@ -1,0 +1,7 @@
+nbproject/*
+coverage/*
+rdoc/*
+pkg/*
+.bundle/*
+vendor/*
+Gemfile.lock

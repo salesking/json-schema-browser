@@ -1,0 +1,6 @@
+source "http://rubygems.org"
+gem "sinatra"
+gem "thin"
+gem "activesupport"
+gem "i18n"
+gem "sk_api_schema"

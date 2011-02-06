@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang='de-DE' xml:lang='de-DE' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>JSON Schema Browser</title>
+<meta content='text/css' http-equiv='Content-Style-Type' />
+<meta content='en' http-equiv='content-language' />
+<meta content='text/javascript' http-equiv='Content-Script-Type' />
+<meta content='no' http-equiv='imagetoolbar' />
+<meta content='text/html; charset=utf-8' />
+<meta content='text/css' />
+<meta content='SalesKing | Invoice on-demand' lang='en-us' name='description' />
+<meta content='index,follow' name='robots' />
+<meta content='Sales King GmbH' name='author' />
+
+<meta content='Sales King GmbH' name='copyright' />
+<meta content='de, en, us' name='language' />
+<meta content='yes' name='allow-search' />
+<meta content='never' name='expires' />
+<meta content='all' name='audience' />
+
+<link href="/css/style.css" media="all" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div id='main'>
+
+</div>
+
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/s2html.js" type="text/javascript"></script>
+<script type="text/javascript">
+// initialize json-schema to html
+$(document).ready(function () {
+
+  //grab schemas, delivered by a local sinatra webserver which is reading the
+  //files form the sk_api_gem.
+  //Can be done using any other server technique you like.
+  $.getJSON("../schemas", function(data){
+    S2Html.schemas = data;
+    $('#main').append( S2Html.out() );
+  });
+  //append events(hide,click) to listings
+
+  //first col
+  $('ul.categories h2').live('click', function(){
+    $('.properties, .links').hide();
+    $('ul.categories .active').removeClass('active');
+    $(this).addClass('active');
+    $(this).parent().find('.properties, .links').toggle();
+  });
+  //second, third col
+  $('ul.properties h3').live('click', function(){
+    $('.prop_vals').hide();
+    $('ul.properties .active').removeClass('active');
+    $(this).addClass('active');
+    $(this).parent().find('.prop_vals').toggle();
+  });
+});
+
+
+</script>
+</body>
+</html>

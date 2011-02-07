@@ -4,7 +4,8 @@
 S2Html = (function() {
 
   // private vars / methods
-  var _html = '';
+  var _html = '',
+      $_html = null;
 
   /**
   * @return Array[ [Int, String] ] Int place of the name in orig schema ary, String schema name
@@ -22,6 +23,7 @@ S2Html = (function() {
   }
 
   /**
+  * @param props Object containing list of valid properties for the instace
   * @return Array[String] property names sorted
   */
   function _get_props(props){
@@ -33,11 +35,11 @@ S2Html = (function() {
     return names;
   }
   /**
-  * @return Array[String] property names sorted
+  * @param links Array[Object] list of link objects
+  * @return Array[String] link relation(rel) names sorted
   */
   function _get_links(links){
-    var names = [];
-    
+    var names = [];    
     $.each(links, function(){
       names.push(this.rel);
     });
@@ -45,18 +47,25 @@ S2Html = (function() {
     return names;
   }
   /**
+  * @param object property values => {'type':'string', 'required':true, ... }
   * @return String html dl containing the property desription
   */
   function _get_prop_vals(vals){
-    var html = '<dl class="prop_vals">';
-
-    $.each(vals, function(k,v){
-      html += '<dt>'+k+'</td>';
-      html += '<dd>'+v+'</dd>';
+    var names = [],
+        html = '<dl class="prop_vals">';
+    // collect prop names(hash keys) for sorting
+    $.each(vals, function(k,v){ names.push( k ) });
+    names.sort();
+    //create html for each key:value
+    $.each(names, function(){
+      html += '<dt>'+this+'</td>';
+      html += '<dd>'+vals[this]+'</dd>';
     });
-     html += '</dl>';
+    html += '</dl>';
     return html;
   }
+
+
   //public
   return {
     // public attributes

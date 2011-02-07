@@ -78,12 +78,12 @@ border-right: 1px solid #8F8F8F;
 border-top: 2px solid #9F9F9F;
 }
 .btn.green{
-  background: -moz-linear-gradient(top, #37BF2F, #007021);
-  background: -webkit-gradient(linear, left top, left bottom, from(#37DF69), to(#007021));
+  background: -moz-linear-gradient(top, #9ECF26, #6D8F1A);
+  background: -webkit-gradient(linear, left top, left bottom, from(#9ECF26), to(#6D8F1A));
   border-bottom: 1px solid #022F00;
-  border-left: 2px solid #61EF59;
+  border-left: 2px solid #B5CF74;
   border-right: 1px solid #022F00;
-  border-top: 2px solid #61EF59;
+  border-top: 2px solid #B5CF74;
   text-transform: uppercase;
 }
 .btn.green:hover, .btn.green.active{

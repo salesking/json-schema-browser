@@ -1,8 +1,8 @@
 body{ font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: 62.5%;}
 ul.categories{position: absolute; width: 250px; top:0;}
 ul.categories li{list-style: none;}
-.col2 {margin: 0 0 0 170px; position: absolute; top: 0; }
-ul.links, ul.properties{display: none; }
+.col2,.col3  {margin: 0 0 0 170px; position: absolute; top: 0; }
+ul.links, ul.properties, ul.link_props{display: none; }
 /*ul.links, ul.properties{margin: 0 0 0 170px; display: none; position: absolute; top: 0; }*/
 ul.categories li h2, ul.categories li h3{margin: 1px 0; padding:0;}
 

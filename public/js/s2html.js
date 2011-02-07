@@ -27,11 +27,13 @@ S2Html = (function() {
   * @return Array[String] property names sorted
   */
   function _get_props(props){
-    var names = []; 
-    $.each(props, function(k,v){
-      names.push(k);
-    });
-    names.sort();
+    var names = [];
+    if(props != undefined){
+      $.each(props, function(k,v){
+        names.push(k);
+      });
+      names.sort();
+    }
     return names;
   }
   /**
@@ -39,15 +41,23 @@ S2Html = (function() {
   * @return Array[String] link relation(rel) names sorted
   */
   function _get_links(links){
-    var names = [];    
+//    var names = [];
+//    $.each(links, function(){
+//      names.push(this.rel);
+//    });
+//    names.sort();
+//    return names;
+    var names = [],
+        i = 0;
     $.each(links, function(){
-      names.push(this.rel);
+      names.push([i, this.rel]);  //[no in links array, relation]
+      i++;
     });
-    names.sort();
+    names.sort( function(a,b){a = a[1];b = b[1]; return a == b ? 0 : (a < b ? -1 : 1)} );
     return names;
   }
   /**
-  * @param object property values => {'type':'string', 'required':true, ... }
+  * @param vals Object property values => {'type':'string', 'required':true, ... }
   * @return String html dl containing the property desription
   */
   function _get_prop_vals(vals){
@@ -86,6 +96,7 @@ S2Html = (function() {
         //properties
         $.each(props, function(){
           _html += "<li><h3 class='btn grey'>"+this+"</h3>";
+          // property values - description, type ..
           var vals = _get_prop_vals(S2Html.schemas[cur_s[0]].properties[this]);
           _html +=vals;
           _html += "</li>"; // close prop
@@ -96,7 +107,24 @@ S2Html = (function() {
           var links = _get_links(S2Html.schemas[cur_s[0]].links);
           _html += "<ul class='links'>";
           $.each(links, function(){
-            _html += "<li><h3 class='btn green'>"+this+"</h3>";
+            var cur_link = this;
+            _html += "<li><h3 class='btn green'>"+cur_link[1]+"</h3>";
+            // link properties
+            // if props add names to col3, and create prop description for col4 => _get_prop_vals
+            var link_props = _get_props(S2Html.schemas[cur_s[0]].links[cur_link[0]].properties);
+            if(link_props.length > 0){
+              console.dir(link_props);
+              _html += "<div class='col3'><ul class='link_props'>";
+              //add col3
+              $.each(link_props, function(){
+                _html += "<li><h3 class='btn grey'>"+this+"</h3>";
+                // property values - description, type ..
+                var vals = _get_prop_vals(S2Html.schemas[cur_s[0]].links[cur_link[0]].properties[this]);
+                _html +=vals;
+                _html += "</li>"; // close prop
+              });
+              _html += "</ul></div>";
+            } // link props present
             _html += "</li>"; // close link
           });
           _html += "</ul>"; // close links

@@ -38,15 +38,9 @@ S2Html = (function() {
   }
   /**
   * @param links Array[Object] list of link objects
-  * @return Array[String] link relation(rel) names sorted
+  * @return Array[ [int,String]] Int place of the name in orig schema ary, link rel name
   */
   function _get_links(links){
-//    var names = [];
-//    $.each(links, function(){
-//      names.push(this.rel);
-//    });
-//    names.sort();
-//    return names;
     var names = [],
         i = 0;
     $.each(links, function(){
@@ -113,7 +107,6 @@ S2Html = (function() {
             // if props add names to col3, and create prop description for col4 => _get_prop_vals
             var link_props = _get_props(S2Html.schemas[cur_s[0]].links[cur_link[0]].properties);
             if(link_props.length > 0){
-              console.dir(link_props);
               _html += "<div class='col3'><ul class='link_props'>";
               //add col3
               $.each(link_props, function(){

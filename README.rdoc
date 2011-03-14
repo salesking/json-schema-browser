@@ -1,6 +1,7 @@
 = JSON Schema Browser
 
-Show JSON Schema's as formatted html, for easy browing. See screenshot.png
+Show JSON Schema's as formatted html, for easy browing. See screenshot.png or
+look at it live http://sk-api-browser.heroku.com/
 
 The most interesting part is a quickly hacked javascript class(s2html.js) 
 rendering a an array of schemas to html, with css styles inspired by 
@@ -11,8 +12,10 @@ for which the ruby part(sinatra webserver) is solely needed.
 
 == Install
 
-    git clone
+    git clone ..
     bundle install
     ruby server.rb
+    # OR rackup
+    bundle exec rackup -p 4567
 
 Copyright (c) 2011 Georg Leciejewski, released under the MIT license

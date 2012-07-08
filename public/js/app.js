@@ -28,7 +28,13 @@ $(document).ready(function () {
 
   // open a field definition
   $('.field .head').live('click', function(){
-    $(this).next('.props').toggle();
+    console.log($(this));
+    if ($(this).attr('href') == 'undefined'){
+      $(this).next('.props').toggle();
+    }else{
+      $(".objects a[href='"+$('.link a',this).attr('href')+"']").trigger('click');
+    }
+
   });
 
   //focus search
@@ -42,7 +48,6 @@ $(document).ready(function () {
 
   // filter fields
   $('#filterFlds').keyup(function(){
-    console.log(this);
     var val = $(this).val();
     $(".field").show();
     $(".field").not("[data-name*='"+ val +"']").hide();

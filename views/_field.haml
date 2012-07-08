@@ -4,8 +4,15 @@
       = '*' if fld[:required]
       = name
       %small="#{fld[:type]}"
-      - if fld[:format]
+      - if fld[:format] && !fld[:properties]
         %small="(#{fld[:format]})"
+      - if fld[:properties] && fld[:properties]['$ref']
+        %small.link
+          -link = fld[:properties]['$ref'][/\.\/(.*)\.json/, 1]
+          %a(href="##{link}")
+            ="[#{link.humanize}]" if fld[:type]=='array'
+            ="(#{link.humanize})" if fld[:type]=='object'
+
       -if fld[:enum]
         %small="(enum)"
       - [%w(minItems maxItems), %w(minimum maximum), %w(minLength maxLength)] .each do |i|
@@ -13,9 +20,9 @@
           %small="#{fld[ i[0] ]}"
         - else
           - if fld[ i[0] ]
-            %small="> #{fld[ i[0] ]}"
+            %small=">#{fld[ i[0] ]}"
           - if fld[ i[1] ]
-            %small="< #{fld[ i[1] ]}"
+            %small="<#{fld[ i[1] ]}"
     .props
       %p= fld[:description]
       - fld.sort{|a,b| a <=> b }.each do |k,v|

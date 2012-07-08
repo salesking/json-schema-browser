@@ -1,0 +1,28 @@
+-fields.sort{|a,b| a <=> b }.each do |name, fld|
+  %div.field
+    .head
+      = '*' if fld[:required]
+      = name
+      %small="#{fld[:type]}"
+      - if fld[:format]
+        %small="(#{fld[:format]})"
+      -if fld[:enum]
+        %small="(enum)"
+      - [%w(minItems maxItems), %w(minimum maximum), %w(minLength maxLength)] .each do |i|
+        - if fld[ i[0] ] == fld[ i[1] ]
+          %small="#{fld[ i[0] ]}"
+        - else
+          - if fld[ i[0] ]
+            %small=">#{fld[ i[0] ]}"
+          - if fld[ i[1] ]
+            %small="<#{fld[ i[1] ]}"
+    .props
+      %p= fld[:description]
+      - fld.sort{|a,b| a <=> b }.each do |k,v|
+        - unless %w(description required readonly type format minItems maxItems maximum minimum minLength maxLength).include?("#{k}")
+          - if k == 'enum'
+            %strong='Valid Values'
+            %p= v.join(', ')
+          - else
+            %strong=k.upcase
+            %p= v

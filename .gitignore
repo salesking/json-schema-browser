@@ -1,6 +1,6 @@
-nbproject/*
 coverage/*
 rdoc/*
 pkg/*
 .bundle/*
 vendor/*
+.rvmrc

@@ -1,0 +1,26 @@
+!!! Strict
+%html{ 'xmlns' => 'http://www.w3.org/1999/xhtml', 'xml:lang' => 'en', 'lang' =>  'en' }
+  %head
+    %title= 'JSON Schema Browser'
+    %meta( name='viewport' content='width=device-width, initial-scale=1.0')
+    %link( href='./css/bootstrap.min.css' rel='stylesheet' type='text/css')
+    %link( href='./css/bootstrap-responsive.min.css' rel='stylesheet' type='text/css')
+    %link( href='./css/custom.css' rel='stylesheet' type='text/css')
+  %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a(class='brand' href='#') API-Browser
+          %ul.nav
+            %li{ :class => 'active' }
+              %a(href='#') Schema
+            %li
+              %a(href='#') Upload
+    .main.container
+      = yield
+    %footer
+      .container
+
+    %script(type='text/javascript' src= 'http://code.jquery.com/jquery-1.7.2.min.js')
+    %script(type='text/javascript' src= './js/bootstrap.min.js')
+    %script(type='text/javascript' src= 'js/app.js')

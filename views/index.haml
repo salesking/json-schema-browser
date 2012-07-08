@@ -1,7 +1,7 @@
 .row-fluid
   .span2.objects
     %form.form-search
-      %input#filter.input-medium(type='text' placeholder='Filter')
+      %input#filter.input-medium(type='text' placeholder='Filter objects')
     %h3 Objects
     %ul.nav.nav-pills.nav-stacked
       - @schemas.sort{|a,b| a[:title].humanize <=> b[:title].humanize }.each do |i|
@@ -9,6 +9,8 @@
           %a(href="##{i[:title]}" data-name="#{i[:title]}")= i[:title].humanize
 
   .span10.object
+    %form.form-search
+      %input#filterFlds.input-medium(type='text' placeholder='Filter fields')
     - @schemas.each do |schema|
       %div.schema(data-name= "#{schema[:title]}" )
         %h2=schema[:title].humanize

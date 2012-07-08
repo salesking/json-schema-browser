@@ -10,7 +10,7 @@ $(document).ready(function () {
     var obj_name = anchor;
   }else{
     var obj = $(".objects li:first");
-    var obj_name = $('a', first).attr('data-name');
+    var obj_name = $('a', obj).attr('data-name');
   }
   obj.addClass('active');
   $(".schema[data-name='"+ obj_name +"']").show();
@@ -33,12 +33,19 @@ $(document).ready(function () {
 
   //focus search
   $('#filter').focus();
-  // filter
+  // filter objects
   $('#filter').keyup(function(){
     var val = $(this).val();
     $(".objects li").show()
-    $(".objects li a").has("[data-name^='"+ val +"']").parent().show();
     $(".objects li a").not("[data-name^='"+ val +"']").parent().hide();
+  });
+
+  // filter fields
+  $('#filterFlds').keyup(function(){
+    console.log(this);
+    var val = $(this).val();
+    $(".field").show();
+    $(".field").not("[data-name*='"+ val +"']").hide();
   });
 
 });

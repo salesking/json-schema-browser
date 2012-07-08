@@ -31,6 +31,7 @@
         %h4 Links
         .links.fields
           - schema[:links].each do |link|
-            %p.field=link[:rel]
+            %p.field
+              ="#{ link[:rel] } <b>#{link[:method] || 'GET'}</b> #{link[:href]} "
 
         %hr

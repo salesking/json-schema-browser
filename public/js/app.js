@@ -27,12 +27,12 @@ $(document).ready(function () {
   });
 
   // open a field definition
-  $('.field .head').live('click', function(){
-    console.log($(this));
-    if ($(this).attr('href') == 'undefined'){
-      $(this).next('.props').toggle();
-    }else{
+  $('.field .head').live('click', function(e){
+//    console.log(e);
+    if (e.target.tagName == 'A'){
       $(".objects a[href='"+$('.link a',this).attr('href')+"']").trigger('click');
+    }else{
+      $(this).next('.props').toggle();
     }
 
   });

@@ -30,8 +30,6 @@
 
         %h4 Links
         .links.fields
-          - schema[:links].each do |link|
-            %p.field
-              ="#{ link[:rel] } <b>#{link[:method] || 'GET'}</b> #{link[:href]} "
+          = partial '_link', :locals => { :links => schema[:links]}
 
         %hr

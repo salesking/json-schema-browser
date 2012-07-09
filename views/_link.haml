@@ -1,0 +1,21 @@
+- links.each do |link|
+  .field(data-name="#{link['rel']}")
+    .head
+      = link['method'] || 'GET'
+      = link['href']
+      %small= link['rel']
+      - if link['properties']
+        %i.icon-info-sign.pull-right
+    - if link['properties']
+      .props
+        %h5 URL Parameter
+        - link['properties'].each do |name, prop|
+          - if prop['required']
+            %strong *
+          %strong=name
+          %small= prop['type']
+          - if prop['format']
+            %small= "(#{prop['format']})"
+          - if prop['dependencies']
+            %small= " - Depends on: #{prop['dependencies'].join(', ')}"
+          %p=prop['description']

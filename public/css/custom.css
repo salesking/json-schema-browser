@@ -8,26 +8,27 @@ h2, h3, h4 {clear: both;}
 .rowbr{clear:left; margin-left: 0 !important;}
 hr{width: 80%; margin: 20px; display:inline-block;}
 .head{font-weight: bold }
-.head small{font-size: 80%; font-weight: normal; }
+.field small{font-size: 80%; font-weight: normal; }
+.links .field{width: 99%; }
 .props{padding-top: 5px}
 
 
 /* Landscape phones and down */
 @media (max-width: 480px) {
-  .field{ width: 100%;}
+  .field{ width: 99% ;}
 }
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
-  .field{ width: 50%;}
+  .field{ width: 99%;}
 }
 
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
-  .field{ width: 50%;}
+  .field{ width: 45%;}
 }
 
 /* Large desktop */
 @media (min-width: 1300px) {
-  .field{ width: 25%;}
+  .field{ width: 20%;}
 }

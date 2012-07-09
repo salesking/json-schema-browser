@@ -1,5 +1,5 @@
 -fields.sort{|a,b| a <=> b }.each do |name, fld|
-  %div.field(data-name=name)
+  .field(data-name=name)
     .head
       = '*' if fld[:required]
       = name
@@ -30,6 +30,11 @@
           - if k == 'enum'
             %strong='Valid Values'
             %p= v.join(', ')
+          - elsif k == 'properties' && v['$ref']
+            %strong='See'
+            %p
+              -link = v['$ref'][/\.\/(.*)\.json/, 1]
+              %a(href="##{link}")="#{link.humanize}"
           - else
             %strong=k.upcase
             %p= v

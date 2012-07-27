@@ -15,12 +15,12 @@ hr{width: 80%; margin: 20px; display:inline-block;}
 
 /* Landscape phones and down */
 @media (max-width: 480px) {
-  .field{ width: 99% ;}
+  .field{ width: 96% ;}
 }
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
-  .field{ width: 99%;}
+  .field{ width: 96%;}
 }
 
 /* Portrait tablet to landscape and desktop */

@@ -41,14 +41,14 @@ $(document).ready(function () {
   $('#filter').focus();
   // filter objects
   $('#filter').keyup(function(){
-    var val = $(this).val();
+    var val = $(this).val().toLowerCase();
     $(".objects li").show()
     $(".objects li a").not("[data-name^='"+ val +"']").parent().hide();
   });
 
   // filter fields
   $('#filterFlds').keyup(function(){
-    var val = $(this).val();
+    var val = $(this).val().toLowerCase();
     $(".field").show();
     $(".field").not("[data-name*='"+ val +"']").hide();
   });

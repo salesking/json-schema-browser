@@ -1,11 +1,6 @@
 = JSON Schema Browser
 
-Show JSON Schema's as formatted html, for easy browing. See screenshot.png or
-look at it live http://sk-api-browser.heroku.com/
-
-The most interesting part is a quickly hacked javascript class(s2html.js) 
-rendering a an array of schemas to html, with css styles inspired by 
-visualjquery.com
+Show JSON Schema's as formatted html, for easy API browsing. See it live at: http://sk-api-browser.heroku.com/
 
 For now the browser shows SalesKing's API schema's (https://github.com/salesking/sk_api_schema/tree/master/json/v1.0) 
 for which the ruby part(sinatra webserver) is solely needed.

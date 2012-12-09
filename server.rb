@@ -26,11 +26,11 @@ end
 def sort_schemas_by_category(schemas)
   sorted_schemas=[]
   categories = {
-    :documents => %w(document invoice credit_note order estimate payment_reminder recurring line_item),
-    :contacts => %w(client address),
-    :templates => %w(pdf_template email_template text_template export_template),
-    :system => %w(company user language sub auth_permission),
-    :supportive => %w(tag email comment attachment export payment product)
+    documents: %w(document invoice credit_note order estimate payment_reminder recurring line_item),
+    contacts: %w(client address),
+    templates: %w(pdf_template email_template text_template export_template),
+    system: %w(company user language sub auth_permission),
+    supportive: %w(tag email comment attachment export payment product)
   }
   categories.each do |cat, obj_types|
     sorted_schemas << cat

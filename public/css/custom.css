@@ -13,7 +13,14 @@ hr{width: 80%; margin: 20px; display:inline-block;}
 .props{padding-top: 5px}
 .navbar .brand { margin-left: -12px;}
 .logo{float:left; padding-top: 5px; height: 32px;}
-
+.obj_type{width: 100px}
+.footer {
+text-align: center;
+padding: 30px 0;
+margin-top: 70px;
+border-top: 1px solid #E5E5E5;
+background-color: whiteSmoke;
+}
 /* Landscape phones and down */
 @media (max-width: 480px) {
   .field{ width: 96% ;}

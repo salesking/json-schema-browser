@@ -17,18 +17,19 @@
           %a(class='brand' href='#')
             SalesKing API-Browser
           %ul.nav
-            %li{ :class => 'active' }
-              %a(href='#') Schema
             %li
-              %a(href='https://github.com/salesking/sk_api_schema/tree/master/json/v1.0') Our JSON Schema on github
+              %a(href='/') Quick View
+            %li
+              %a(href='/table') Table view
           %ul.nav.pull-right
             %li
-              %a(href='https://github.com/salesking/json-schema-browser')Fork this API-Browser on github
+              %a(href='https://github.com/salesking/sk_api_schema/tree/master/json/v1.0') This JSON Schema on github
 
     .main.container
       = yield
-    %footer
+    %footer.footer
       .container
+        %a(href='https://github.com/salesking/json-schema-browser') API-Browser on github
 
     %script(type='text/javascript' src= 'http://code.jquery.com/jquery-1.7.2.min.js')
     %script(type='text/javascript' src= './js/bootstrap.js')

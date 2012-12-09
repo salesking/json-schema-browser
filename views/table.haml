@@ -4,16 +4,7 @@
       %input#filter.input-medium(type='text' placeholder='Filter objects')
     %h3 Objects
     %ul.nav.nav-pills.nav-stacked
-      - @sorted_schemas.each do |i|
-        -if i.is_a? Array
-          - i.each do |schema|
-            %li
-              %a(href="##{schema[:title]}" data-name="#{schema[:title]}")= schema[:title].humanize
-        - else
-          %li.nav-header= i
-
-
-      -# @schemas.sort{|a,b| a[:title].humanize <=> b[:title].humanize }.each do |i|
+      -@schemas.sort{|a,b| a[:title].humanize <=> b[:title].humanize }.each do |i|
         %li
           %a(href="##{i[:title]}" data-name="#{i[:title]}")= i[:title].humanize
 
@@ -30,12 +21,12 @@
           %i.icon-download
           Readonly Properties
         .row-fluid.fields
-          = partial '_field', :locals => { :fields => getter}
+          = partial '_field_table', :locals => { :fields => getter}
         %h4
           %i.icon-upload
           Writable Properties
         .row-fluid.fields
-          = partial '_field', :locals => { :fields => setter}
+          = partial '_field_table', :locals => { :fields => setter}
 
         %h4 Links
         .links.fields

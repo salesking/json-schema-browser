@@ -1,0 +1,37 @@
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th Name
+      %th.obj_type Type
+      %th Description
+    %tbody
+      -fields.sort{|a,b| a <=> b }.each do |name, fld|
+        %tr(data-name=name)
+          %td
+            = name
+            %small= '(required)' if fld[:required]
+          %td
+            = fld[:type]
+            - if fld[:format] && !fld[:properties]
+              %small="(#{fld[:format]})"
+            - if fld[:properties] && fld[:properties]['$ref']
+              %small.link
+                -link = fld[:properties]['$ref'][/\.\/(.*)\.json/, 1]
+                %a(href="##{link}")
+                  ="[#{link.humanize}]" if fld[:type]=='array'
+                  ="(#{link.humanize})" if fld[:type]=='object'
+            -if fld[:enum]
+              %small="(enum)"
+              %p
+                ="[ #{fld[:enum].join(', ')}]"
+            - [%w(minItems maxItems), %w(minimum maximum), %w(minLength maxLength)] .each do |i|
+              - if fld[ i[0] ] == fld[ i[1] ]
+                %small="#{fld[ i[0] ]}"
+              - else
+                - if fld[ i[0] ]
+                  %small=">#{fld[ i[0] ]}"
+                - if fld[ i[1] ]
+                  %small="<#{fld[ i[1] ]}"
+          %td
+            = fld[:description]
+

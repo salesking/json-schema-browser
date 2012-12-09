@@ -3,13 +3,13 @@
 h2, h3, h4 {clear: both;}
 .schema h4 {margin-top: 15px;}
 .fields{clear: both;}
-.field{ margin: 5px 5px 5px 0px; border: 1px solid  #DDD; -webkit-border-radius: 4px ; -moz-border-radius: 4px; border-radius: 4px; color: #555; padding: 10px; width: 30%; float:left;}
-.field:hover{background-color:#DDD ; border-color: #EEE; cursor: pointer; }
+div.field{ margin: 5px 5px 5px 0px; border: 1px solid  #DDD; -webkit-border-radius: 4px ; -moz-border-radius: 4px; border-radius: 4px; color: #555; padding: 10px; width: 30%; float:left;}
+div.field:hover{background-color:#DDD ; border-color: #EEE; cursor: pointer; }
 .rowbr{clear:left; margin-left: 0 !important;}
 hr{width: 80%; margin: 20px; display:inline-block;}
 .head{font-weight: bold }
 .field small{font-size: 80%; font-weight: normal; }
-.links .field{width: 99%; }
+.links div.field{width: 99%; }
 .props{padding-top: 5px}
 .navbar .brand { margin-left: -12px;}
 .logo{float:left; padding-top: 5px; height: 32px;}

@@ -6,7 +6,7 @@
       %th Description
     %tbody
       -fields.sort{|a,b| a <=> b }.each do |name, fld|
-        %tr(data-name=name)
+        %tr(data-name=name class='field')
           %td
             = name
             %small= '(required)' if fld[:required]
@@ -22,8 +22,7 @@
                   ="(#{link.humanize})" if fld[:type]=='object'
             -if fld[:enum]
               %small="(enum)"
-              %p
-                ="[ #{fld[:enum].join(', ')}]"
+              %small="[#{fld[:enum].join(', ')}]"
             - [%w(minItems maxItems), %w(minimum maximum), %w(minLength maxLength)] .each do |i|
               - if fld[ i[0] ] == fld[ i[1] ]
                 %small="#{fld[ i[0] ]}"

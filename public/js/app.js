@@ -4,13 +4,13 @@ $(document).ready(function () {
   // init hide all obj details
   $(".schema").hide();
   $(".field .props").hide();
-  // activate from anchor or first
+  // activate from anchor
   if (anchor.length>1){
     var obj = $(".objects li a[data-name='"+anchor+"']").parent();
     var obj_name = anchor;
   }else{
-    var obj = $(".objects li:first");
-    var obj_name = $('a', obj).attr('data-name');
+    var obj = $(".objects li a[data-name='invoice']").parent();
+    var obj_name = 'invoice';
   }
   obj.addClass('active');
   $(".schema[data-name='"+ obj_name +"']").show();

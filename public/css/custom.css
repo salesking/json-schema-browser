@@ -11,7 +11,8 @@ hr{width: 80%; margin: 20px; display:inline-block;}
 .field small{font-size: 80%; font-weight: normal; }
 .links .field{width: 99%; }
 .props{padding-top: 5px}
-
+.navbar .brand { margin-left: -12px;}
+.logo{float:left; padding-top: 6px;}
 
 /* Landscape phones and down */
 @media (max-width: 480px) {

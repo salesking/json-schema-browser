@@ -12,7 +12,7 @@ hr{width: 80%; margin: 20px; display:inline-block;}
 .links .field{width: 99%; }
 .props{padding-top: 5px}
 .navbar .brand { margin-left: -12px;}
-.logo{float:left; padding-top: 6px;}
+.logo{float:left; padding-top: 5px; height: 32px;}
 
 /* Landscape phones and down */
 @media (max-width: 480px) {

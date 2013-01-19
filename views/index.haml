@@ -21,7 +21,7 @@
     %form.form-search
       %input#filterFlds.input-medium(type='text' placeholder='Filter fields')
     - @schemas.each do |schema|
-      %div.schema(data-name= "#{schema[:title]}" )
+      %div.schema.collapsed(data-name= "#{schema[:title]}" )
         %h2=schema[:title].humanize
         %p=schema[:description]
         - getter, setter = {},{}

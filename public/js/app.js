@@ -3,7 +3,7 @@ $(document).ready(function () {
   var anchor = window.location.hash.substring(1);
   // init hide all obj details
   $(".schema").hide();
-  $(".field .props").hide();
+  $(".collapsed .field .props").hide();
   // activate from anchor
   if (anchor.length>1){
     var obj = $(".objects li a[data-name='"+anchor+"']").parent();
@@ -28,7 +28,6 @@ $(document).ready(function () {
 
   // open a field definition
   $('.field .head').live('click', function(e){
-//    console.log(e);
     if (e.target.tagName == 'A'){
       $(".objects a[href='"+$('.link a',this).attr('href')+"']").trigger('click');
     }else{

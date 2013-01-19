@@ -5,17 +5,37 @@
       = link['href']
       %small= link['rel']
       - if link['properties']
-        %i.icon-info-sign.pull-right
+        .pull-right
+          %small URL Params
+          %i.icon-chevron-down
     - if link['properties']
       .props
-        %h5 URL Parameter
-        - link['properties'].each do |name, prop|
-          - if prop['required']
-            %strong *
-          %strong=name
-          %small= prop['type']
-          - if prop['format']
-            %small= "(#{prop['format']})"
-          - if prop['dependencies']
-            %small= " - Depends on: #{prop['dependencies'].join(', ')}"
-          %p=prop['description']
+        %pre
+          - link_url, link_params = "/api/#{link['href']}", []
+          - link['properties'].keys.sample(2).map{|prop_name| link_params << "<strong>#{prop_name}</strong>=Value" }
+          = "#{link_url}?#{link_params.join('&')}"
+
+        %table.table.table-bordered.table-striped
+          %thead
+            %tr
+              %th Name
+              %th.obj_type Type
+              %th Description / Example
+          - link['properties'].each do |name, prop|
+            %tbody
+              %tr
+                %td
+                  = name
+                  = " *" if prop['required']
+                %td
+                  = prop['type']
+                  - if prop['format']
+                    %small= "(#{prop['format']})"
+                  -if prop['enum']
+                    %small="(enum)"
+                    %br
+                    %small= "[#{prop['enum'].join(', ')}]"
+                  - if prop['dependencies']
+                    %small= " - Depends on: #{prop['dependencies'].join(', ')}"
+                %td
+                  %p=prop['description']

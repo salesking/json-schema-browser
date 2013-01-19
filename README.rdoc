@@ -9,8 +9,8 @@ Display formmating is done with ruby inside the haml-templates.
 
     git clone ..
     bundle install
-    ruby server.rb
-    # OR rackup
-    bundle exec rackup -p 4567
+    rackup
+    #OR ruby server.rb
+    # bundle exec rackup -p 4567
 
 Copyright (c) 2011 Georg Leciejewski, released under the MIT license

@@ -40,3 +40,12 @@ background-color: whiteSmoke;
 @media (min-width: 1300px) {
   .field{ width: 20%;}
 }
+
+@media print {
+
+  .span2.objects{ width: 0 !important; display: none;}
+  .span10.object{ width: 100% !important; margin-top: -50px; }
+  .form-search{ visibility: hidden; display: none;}
+  .navbar-fixed-top .nav{ display: none;}
+  .navbar-fixed-top .brand{ padding-left: 50px;}
+}

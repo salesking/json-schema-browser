@@ -28,9 +28,9 @@
                 %small="#{fld[ i[0] ]}"
               - else
                 - if fld[ i[0] ]
-                  %small=">#{fld[ i[0] ]}"
+                  %small="&ge; #{fld[ i[0] ]}"
                 - if fld[ i[1] ]
-                  %small="<#{fld[ i[1] ]}"
+                  %small="&le; #{fld[ i[1] ]}"
           %td
             = fld[:description]
 

@@ -1,6 +1,10 @@
 -fields.sort{|a,b| a <=> b }.each do |name, fld|
-  .field(data-name=name)
+  - deprecated = fld[:description] && fld[:description].downcase[/deprecated/]
+
+  .field(data-name=name class="#{deprecated ? 'deprecated' : ''}")
     .head
+      - if deprecated
+        %i.icon-thumbs-down
       = '*' if fld[:required]
       = name
       %small="#{fld[:type]}"
@@ -23,7 +27,10 @@
             %small="&ge; #{fld[ i[0] ]}"
           - if fld[ i[1] ]
             %small="&le; #{fld[ i[1] ]}"
+
     .props
+      - deprecated = fld[:description] && fld[:description].downcase[/deprecated/]
+      - depr_class = deprecated ? 'deprecated' : ''
       %p= fld[:description]
       - fld.sort{|a,b| a <=> b }.each do |k,v|
         - unless %w(description required readonly type format minItems maxItems maximum minimum minLength maxLength).include?("#{k}")

@@ -6,8 +6,11 @@
       %th Description
     %tbody
       -fields.sort{|a,b| a <=> b }.each do |name, fld|
+        - deprecated = fld[:description] && fld[:description].downcase[/deprecated/]
         %tr(data-name=name class='field')
-          %td
+          %td(class="#{deprecated ? 'deprecated' : ''}")
+            - if deprecated
+              %i.icon-thumbs-down
             = name
             %small= '(required)' if fld[:required]
           %td

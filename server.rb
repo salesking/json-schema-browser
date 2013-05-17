@@ -20,6 +20,11 @@ end
 get '/schemas' do
   content_type :json
   SK::Api::Schema.read_all('v1.0').to_json
+  end
+
+get '/changelog' do
+  @content = File.read(params[:topic] + ".md")
+  haml :changelog
 end
 
 # TODO enhance the schema itself to support such a descition on object level

@@ -22,17 +22,20 @@
               %th.obj_type Type
               %th Description / Example
           - link['properties'].each do |name, prop|
+            - deprecated = prop[:description] && prop[:description].downcase[/deprecated/]
             %tbody
               %tr
-                %td
+                %td(class="#{deprecated ? 'deprecated' : ''}")
+                  - if deprecated
+                    %i.icon-thumbs-down
                   = name
-                  = " *" if prop['required']
+                  = ' *' if prop['required']
                 %td
                   = prop['type']
                   - if prop['format']
                     %small= "(#{prop['format']})"
                   -if prop['enum']
-                    %small="(enum)"
+                    %small='(enum)'
                     %br
                     %small= "[#{prop['enum'].join(', ')}]"
                   - if prop['dependencies']

@@ -29,13 +29,16 @@ $(document).ready(function () {
   // open a field definition
   $('.field .head').live('click', function(e){
     if (e.target.tagName == 'A'){
-      $(".objects a[href='"+$('.link a',this).attr('href')+"']").trigger('click');
+      $(".objects a[href='"+$(e.target).attr('href')+"']").trigger('click');
     }else{
       $(this).next('.props').toggle();
     }
-
   });
 
+  // got to related in table view
+  $('.table .link a').live('click', function(e){
+    $(".objects a[href='"+$(e.target).attr('href')+"']").trigger('click');
+  });
   //focus search
   $('#filter').focus();
   // filter objects

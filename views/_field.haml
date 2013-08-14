@@ -16,6 +16,16 @@
           %a(href="##{link}")
             ="[#{link.humanize}]" if fld[:type]=='array'
             ="(#{link.humanize})" if fld[:type]=='object'
+      - if fld[:items].present?
+        %small.link
+          - refs = fld[:items].is_a?(Array) ? fld[:items] : [fld[:items]]
+          - links = []
+          - refs.each do |ref|
+            - link = ref['$ref'][/\.\/(.*)\.json/, 1]
+            - links << "<a href='##{link}'>#{link.humanize}</a>"
+          - links_html = links.join(' | ')
+          !="[#{links_html}]" if fld[:type]=='array'
+          !="(#{links_html})" if fld[:type]=='object'
 
       -if fld[:enum]
         %small="(enum)"
@@ -42,6 +52,13 @@
             %p
               -link = v['$ref'][/\.\/(.*)\.json/, 1]
               %a(href="##{link}")="#{link.humanize}"
+          - elsif k == 'items' && v.present?
+            %strong='See'
+            %p
+              - refs = v.is_a?(Array) ? v : [v]
+              - refs.each do |ref|
+                - link = ref['$ref'][/\.\/(.*)\.json/, 1]
+                %a(href="##{link}")="#{link.humanize}"
           - else
             %strong=k.upcase
             %p= v

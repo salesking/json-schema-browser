@@ -1,4 +1,5 @@
 require 'rubygems'
+require 'active_support/all'
 require 'bundler/setup'
 require 'sinatra'
 require 'sk_api_schema'
